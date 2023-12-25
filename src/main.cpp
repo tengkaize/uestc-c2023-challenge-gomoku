@@ -1,7 +1,6 @@
 #include "board.hpp"
 #include "player/base.hpp"
 #include "player/minimax.hpp"
-#include "player/mcts.hpp"
 #include "ui.hpp"
 
 #include <memory>
@@ -13,7 +12,7 @@ int main() {
 	using namespace ::tkz::gomoku;
 
 	unique_ptr<Player> blackPlayer = make_unique<UIPlayer>();
-	unique_ptr<Player> whitePlayer = make_unique<AsyncPlayer>(make_unique<MCTSPlayer>());
+	unique_ptr<Player> whitePlayer = make_unique<AsyncPlayer>(make_unique<MinimaxPlayer>());
 	vector<Step> steps;
 
 	InitWindow(width, height, "Gomoku");

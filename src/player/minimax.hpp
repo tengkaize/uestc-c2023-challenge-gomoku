@@ -70,8 +70,8 @@ struct MinimaxPlayer : public Player {
 		double min(int depth, double alpha, double beta) {
 			Side side = steps.empty() ? Black{} : alter(steps.back().side);
 			if (depth == player->depth || !steps.empty() && board.isWinningPos(steps.back().pos)) {
-				double ally = player->eval(board, alter(side));
-				double enemy = player->eval(board, side);
+				double ally = player->eval(board, side);
+				double enemy = player->eval(board, alter(side));
 				double score = ally - enemy;
 				// ::fmt::println("{:016x} (depth={}) : {} = {} - {}", hash, depth, score, ally, enemy);
 				return score;

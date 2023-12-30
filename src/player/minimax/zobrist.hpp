@@ -19,8 +19,8 @@ struct Zobrist {
 	::std::uint_fast64_t operator()(Side side, Position pos) const {
 		return ::std::visit(
 			overloaded{
-				make_matcher<Black>(ref(this->black)),
-				make_matcher<White>(ref(this->white)),
+				make_matcher<Black>(::std::ref(this->black)),
+				make_matcher<White>(::std::ref(this->white)),
 			},
 			side
 		).get()[Position::toIndex(pos)];
